@@ -1,8 +1,8 @@
 # miniswe-langgraph
 
-A LangGraph-based reimplementation of [mini-swe-agent](https://github.com/SWE-bench/mini-swe-agent). It is a minimal agent loop that lets an LLM autonomously complete a task by issuing shell commands inside a sandboxed working directory.
+A LangGraph-based reimplementation of [mini-swe-agent](https://github.com/SWE-agent/mini-swe-agent). It is a minimal agent loop that lets an LLM autonomously complete a task by issuing shell commands inside a sandboxed working directory.
 
-> Inspired by [mini-swe-agent](https://github.com/SWE-bench/mini-swe-agent) (built on top of [SWE-bench](https://github.com/SWE-bench/SWE-bench)). This project ports the same minimal agent pattern to [LangGraph](https://github.com/langchain-ai/langgraph).
+> Inspired by [mini-swe-agent](https://github.com/SWE-agent/mini-swe-agent) (built on top of [SWE-bench](https://github.com/SWE-bench/SWE-bench)). This project ports the same minimal agent pattern to [LangGraph](https://github.com/langchain-ai/langgraph).
 
 ## Architecture
 
@@ -100,7 +100,7 @@ python -m miniswe_langgraph "Compile hello.c and run it"
 
 This project is a LangGraph port of the ideas and design from the following upstream projects:
 
-- [SWE-bench/mini-swe-agent](https://github.com/SWE-bench/mini-swe-agent) — the original minimal agent whose architecture we reimplemented.
+- [SWE-agent/mini-swe-agent](https://github.com/SWE-agent/mini-swe-agent) — the original minimal agent whose architecture we reimplemented.
 - [SWE-bench/SWE-bench](https://github.com/SWE-bench/SWE-bench) — the benchmark and ecosystem that mini-swe-agent was built for.
 - [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) — the framework used to express the agent loop as a state graph.
 - [langchain-ai/langchain](https://github.com/langchain-ai/langchain) — the `ChatOpenAI` client and `ToolNode` infrastructure.
@@ -111,4 +111,4 @@ Thanks to the authors and contributors of those projects.
 
 Released under the [MIT License](LICENSE). See `LICENSE` for the full text.
 
-If you re-use code or ideas from [mini-swe-agent](https://github.com/SWE-bench/mini-swe-agent), please also retain attribution to that project (it is MIT-licensed as well).
+If you re-use code or ideas from [mini-swe-agent](https://github.com/SWE-agent/mini-swe-agent), please also retain attribution to that project (it is MIT-licensed as well).
