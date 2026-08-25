@@ -2,6 +2,8 @@
 
 A LangGraph-based reimplementation of [mini-swe-agent](https://github.com/SWE-bench/mini-swe-agent). It is a minimal agent loop that lets an LLM autonomously complete a task by issuing shell commands inside a sandboxed working directory.
 
+> Inspired by [mini-swe-agent](https://github.com/SWE-bench/mini-swe-agent) (built on top of [SWE-bench](https://github.com/SWE-bench/SWE-bench)). This project ports the same minimal agent pattern to [LangGraph](https://github.com/langchain-ai/langgraph).
+
 ## Architecture
 
 The agent is modeled as a LangGraph state machine with two nodes that loop until the model stops emitting tool calls:
@@ -21,7 +23,7 @@ State (`src/miniswe_langgraph/state.py:4`) carries the LangChain message list an
 | --- | --- |
 | `src/miniswe_langgraph/__init__.py` | CLI entry point; loads `.env`, configures logging, streams graph events, persists trajectory. |
 | `src/miniswe_langgraph/agent.py` | LLM node  invokes the model with the `shell` tool bound. |
-| `src/miniswe_langgraph/graph.py` | Builds the LangGraph `StateGraph`, defines the `agent` � `tools` loop. |
+| `src/miniswe_langgraph/graph.py` | Builds the LangGraph `StateGraph`, defines the `agent` � `tools` loop. |
 | `src/miniswe_langgraph/tools.py` | Defines the `shell` tool that delegates to `Environment.execute`. |
 | `src/miniswe_langgraph/environment.py` | `subprocess.run` wrapper with `cwd` pinned to `./workspace`. |
 | `src/miniswe_langgraph/model.py` | `ChatOpenAI` client configured from `MODEL` and `MINIMAX_BASE_URL` env vars. |
@@ -92,3 +94,20 @@ python -m miniswe_langgraph "Compile hello.c and run it"
 - The `shell` tool executes with `shell=True` against `./workspace`. Commands are not sandboxed beyond the working directory, so treat the model as a privileged user.
 - `Environment.execute` returns combined `stdout + stderr`; the agent must rely on the textual feedback to detect failures (there is no structured exit code in the result).
 - `logs/last_run_traj.json` is overwritten on every run. Move it aside if you want to keep a history.
+
+## Acknowledgements / References
+
+This project is a LangGraph port of the ideas and design from the following upstream projects:
+
+- [SWE-bench/mini-swe-agent](https://github.com/SWE-bench/mini-swe-agent) — the original minimal agent whose architecture we reimplemented.
+- [SWE-bench/SWE-bench](https://github.com/SWE-bench/SWE-bench) — the benchmark and ecosystem that mini-swe-agent was built for.
+- [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) — the framework used to express the agent loop as a state graph.
+- [langchain-ai/langchain](https://github.com/langchain-ai/langchain) — the `ChatOpenAI` client and `ToolNode` infrastructure.
+
+Thanks to the authors and contributors of those projects.
+
+## License
+
+Released under the [MIT License](LICENSE). See `LICENSE` for the full text.
+
+If you re-use code or ideas from [mini-swe-agent](https://github.com/SWE-bench/mini-swe-agent), please also retain attribution to that project (it is MIT-licensed as well).

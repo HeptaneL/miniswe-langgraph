@@ -1,8 +1,12 @@
 [project]
 name = "miniswe-langgraph"
 version = "0.1.0"
-description = "Add your description here"
+description = "A LangGraph-based reimplementation of mini-swe-agent — a minimal LLM agent loop with a single shell tool."
 readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "Ivy Lin", email = "1010410164@qq.com" },
+]
 requires-python = ">=3.12"
 dependencies = [
     "dotenv>=0.9.9",
