@@ -1,0 +1,49 @@
+You are given the following task to solve inside the sandboxed environment:
+
+--------------------------------------------------------------------------------
+TASK
+--------------------------------------------------------------------------------
+
+{{ task }}
+
+--------------------------------------------------------------------------------
+WHAT "DONE" MEANS
+--------------------------------------------------------------------------------
+
+The task is considered complete only when ALL of the following hold:
+
+  1. The change(s) described in the task have been applied to the codebase.
+  2. The change has been verified — either by running the project's own test
+     suite, by running a focused reproduction command, or by reading the
+     relevant code paths end-to-end and confirming the new behavior is correct.
+  3. No unrelated regressions have been introduced. If you ran a broad test
+     suite, it still passes (modulo pre-existing failures unrelated to your
+     change).
+  4. You emit a final assistant turn (no tool call) that summarizes:
+       - which file(s) you changed and roughly how,
+       - the verification command(s) you ran,
+       - the result.
+
+Do not stop early. Do not declare success on the basis of "the code looks right".
+
+--------------------------------------------------------------------------------
+IF YOU NEED MORE CONTEXT
+--------------------------------------------------------------------------------
+
+It is fine — and expected — to spend your early tool calls exploring:
+  - reading the README / docs,
+  - listing the repo structure,
+  - running `git log` / `git blame` on suspicious regions,
+  - searching for symbol definitions with `grep -rn` / `rg`,
+  - reading the failing test or the function under test in full.
+
+You are not penalized for exploration. You are penalized for changing code you
+do not understand.
+
+--------------------------------------------------------------------------------
+START
+--------------------------------------------------------------------------------
+
+Begin by orienting yourself: list the working directory and identify the
+language, build system, and test runner. Then proceed with the workflow
+described in the system prompt.

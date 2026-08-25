@@ -1,0 +1,33 @@
+Below is the result of the shell command you just ran.
+
+Exit code: {{ returncode }}
+{% if returncode == 0 -%}
+  (success)
+{%- else -%}
+  (non-zero — treat this as a failure signal; read the output carefully)
+{%- endif %}
+
+--------------------------------------------------------------------------------
+OUTPUT
+--------------------------------------------------------------------------------
+
+{{ output }}
+
+--------------------------------------------------------------------------------
+HOW TO INTERPRET THIS
+--------------------------------------------------------------------------------
+
+- `Exit code: 0` — the command succeeded. Read the output and decide the next
+  step based on its content.
+- `Exit code != 0` — the command failed. The output below usually contains the
+  error message. Re-read it, identify the root cause (not just the symptom),
+  and choose a new command that addresses it. Do not blindly retry the same
+  command with cosmetic tweaks.
+- If the output appears truncated, very large, or binary, narrow your next
+  command: redirect to a file, pipe through `head`/`tail`/`grep`, or use a more
+  targeted query instead of re-running the same thing.
+- If the output is empty, that is itself information: the command ran but
+  produced nothing. Decide whether that matches your expectation.
+
+Now decide the next action and invoke `shell` again, or — if you are done — emit
+a final summary turn without a tool call.

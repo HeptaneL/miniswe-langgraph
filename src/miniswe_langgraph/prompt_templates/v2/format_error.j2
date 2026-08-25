@@ -1,0 +1,24 @@
+Your previous assistant turn could not be parsed as a valid action.
+
+Parser / format error reported by the system:
+
+--------------------------------------------------------------------------------
+{{ error }}
+--------------------------------------------------------------------------------
+
+This is a protocol error, not a problem with your plan. Re-emit your next move
+strictly as a single `shell` tool call. Do NOT:
+
+  - output plain text as the action,
+  - wrap the tool call in markdown fences, JSON, or XML,
+  - include multiple tool calls in one turn,
+  - include commentary after the tool call block,
+  - try to call a tool that was not provided.
+
+Do:
+
+  - state (in 1–3 sentences) what you learned from the failure and what you are
+    trying next,
+  - then emit exactly one `shell` invocation with a single, runnable command.
+
+Then continue solving the task as described in the system prompt.

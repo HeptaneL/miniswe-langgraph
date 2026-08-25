@@ -26,7 +26,7 @@ State (`src/miniswe_langgraph/state.py:4`) carries the LangChain message list an
 | `src/miniswe_langgraph/graph.py` | Builds the LangGraph `StateGraph`, defines the `agent` � `tools` loop. |
 | `src/miniswe_langgraph/tools.py` | Defines the `shell` tool that delegates to `Environment.execute`. |
 | `src/miniswe_langgraph/environment.py` | `subprocess.run` wrapper with `cwd` pinned to `./workspace`. |
-| `src/miniswe_langgraph/model.py` | `ChatOpenAI` client configured from `MODEL` and `MINIMAX_BASE_URL` env vars. |
+| `src/miniswe_langgraph/model.py` | `ChatOpenAI` client configured from `MODEL` and `BASE_URL` env vars. |
 | `src/miniswe_langgraph/state.py` | `State` TypedDict: `messages` (with `add_messages` reducer) + `trajectory`. |
 | `src/miniswe_langgraph/trajectory.py` | Records every event (user prompt, assistant, tool, graph update) to `logs/last_run_traj.json`. |
 | `workspace/` | Default working directory in which `shell` commands are executed. |
@@ -45,8 +45,9 @@ State (`src/miniswe_langgraph/state.py:4`) carries the LangChain message list an
 
    ```env
    MODEL=MiniMax-M3
-   MINIMAX_BASE_URL=https://api.minimaxi.com/v1
-   MINIMAX_API_KEY=...
+   BASE_URL=https://api.minimaxi.com/v1
+   OPENAI_API_KEY=...
+   OPENAI_ADMIN_KEY=...
    ```
 
    `OPENAI_API_KEY` is also read by `langchain-openai`; either set it explicitly or rely on the same value via the environment.

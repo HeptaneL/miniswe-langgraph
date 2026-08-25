@@ -7,7 +7,7 @@ class Environment:
         self.workdir = Path(workdir).resolve()
         self.workdir.mkdir(parents=True, exist_ok=True)
 
-    def execute(self, command: str) -> str:
+    def execute(self, command: str) -> tuple[int, str]:
         result = subprocess.run(
             command,
             shell=True,
@@ -15,4 +15,4 @@ class Environment:
             capture_output=True,
             text=True,
         )
-        return result.stdout + result.stderr
+        return result.returncode, result.stdout + result.stderr
